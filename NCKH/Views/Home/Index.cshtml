@@ -1,0 +1,142 @@
+﻿<!-- Navbar End -->
+<!-- Carousel Start -->
+<div class="container-fluid mb-3">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#header-carousel" data-slide-to="1"></li>
+                    <li data-target="#header-carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item position-relative active" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/Content/CTSV/KHUON-VIEN-TDMU.jpg" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Công tác sinh viên</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="Sanpham/Danhmuc/1">Xem ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/Content/CTSV/KHUON-VIEN-TDMU0.jpg" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Hỗ trợ sinh viên</h1>
+
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="Sanpham/Danhmuc/3">Xem ngày</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/Content/CTSV/KHUON-VIEN-TDMU1.jpg" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Phục vụ người học</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="Sanpham/Danhmuc/2">Xem Ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="product-offer mb-30" style="height: 200px;">
+                <img class="img-fluid" src="~/Content/CTSV/KHUON-VIEN-TDMUtt.jpg" alt="">
+                <div class="offer-text">
+                    <h3 class="text-white mb-3">Triết lý giáo dục</h3>
+                    <a href="" class="btn btn-primary">Xem ngay</a>
+                </div>
+            </div>
+            <div class="product-offer mb-30" style="height: 200px;">
+
+                <img class="img-fluid" src="~/Content/CTSV/KHUON-VIEN-TDMUdaotao.jpg" alt="">
+                <div class="offer-text">
+                    <h3 class="text-white mb-3">Đào tạo toàn diện</h3>
+                    <a href="" class="btn btn-primary">Xem ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- Featured Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">KHÁT VỌNG</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                <h5 class="font-weight-semi-bold m-0">TRÁCH NHIỆM</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">SÁNG TẠO</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured End -->
+<!-- Categories Start -->
+@Html.Action("Theloai", "Home")
+<!-- Categories End -->
+<!-- Products Start -->
+<div class="container-fluid pt-5 pb-3">
+    @Html.Action("Thontinnoibat","ThongTin")
+
+    <!-- Products End -->
+    <!-- Offer Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <div class="row px-xl-5">
+            <div class="col-md-6">
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="~/Content/CTSV/ANH KHOI NGHIEP.jpg" alt="">
+                    <div class="offer-text">
+
+                        <h3 class="text-white mb-3 text-center ">Có ý thức phấn đấu vươn lên đỉnh cao trí thức, ước vọng tới những điều tốt đẹp và quyết tâm thực hiện một cách mạnh mẽ nhất.</h3>
+                        <a href="Sanpham/Danhmuc/8" class="btn btn-primary">Xem ngay</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="~/Content/CTSV/IMG_6143.jpg" alt="">
+
+                    <div class="offer-text">
+                        <h3 class="text-white mb-3 text-center ">Có thái độ tích cực và tinh thần trách nhiệm với chính mình, với gia đình, xã hội, Tổ quốc, nhân loại; có đủ năng lực và kỹ năng để chịu trách nhiệm</h3>
+                        <a href="Sanpham/Danhmuc/8" class="btn btn-primary">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Offer End -->
+<!-- Products Start -->
+<!-- Products End -->
+<!-- Vendor Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col">
+
+        </div>
+    </div>
+</div>

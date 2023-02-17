@@ -1,0 +1,48 @@
+﻿@using NCKH.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<NCKH.Models.THONGTIN>
+
+
+<section id="main-content" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <!----col-lg-push-3 col-md-push-3---->
+    @foreach (var TT in Model)
+    {
+
+
+        <div class="list-group archive">
+            <a href="@Url.Action("ChitietThongTin", "ThongTin", new { id = TT.MATT })" class="list-group-item" rel="bookmark" title="">
+                <h4 class="item-title" href="">@TT.TENTT</h4><i class="chungaythang">@TT.NGAYDANG</i>
+            </a>
+
+        </div>
+    }
+
+
+    <nav class="col-12" style="text-align:center">
+        <span class="pre">&nbsp;&nbsp;&nbsp;</span>
+
+        <span class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Thongtin", new { page = page }))
+
+        </span>
+        <style>
+            .MenuTrang {
+                display: inline-block;
+                text-align: center;
+            }
+
+                .MenuTrang a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                }
+
+                    .MenuTrang a:hover:not(.active) {
+                        background-color: yellow;
+                        color: black;
+                        border-radius: 5px;
+                    }
+        </style>
+    </nav>
+</section>

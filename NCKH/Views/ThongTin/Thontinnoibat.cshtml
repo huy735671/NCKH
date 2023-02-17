@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<NCKH.Models.THONGTIN>
+@using NCKH.Models;
+
+
+
+    <div class="elementor-widget-wrap elementor-element-populated">
+        <div class="container-fluid pt-5 pb-3" style="background: url('../Content/imgweb/backgrou.jpg'); background-repeat: no-repeat; background-color: #000d21; background-attachment: fixed; background-size:cover  ">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="font-size:30px;font-family:Cambria;font-weight:bold"><span class="border-sp" style="color:white; background:none; border:3px solid white;border-radius:9999px;padding:10px">Thông tin nổi bật</span></h2>
+
+            <div class="elementor-element elementor-element-61d2daa elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="61d2daa" data-element_type="widget" data-widget_type="icon-list.default">
+                @foreach (var TT in Model)
+                {
+                    <div class="elementor-widget-container">
+
+                        <ul class="elementor-icon-list-items">
+                            <li class="elementor-icon-list-item">
+                                <a href="@Url.Action("ChitietThongTin", "ThongTin", new { id = TT.MATT })>" target="_blank">
+
+                                    <span class="elementor-icon-list-icon">
+                                        <i aria-hidden="true" class="far fa-hand-point-right"></i>
+                                    </span>
+                                    <span class="elementor-icon-list-text">@TT.TENTT</span>
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                }
+            </div>
+
+           
+
+            <div class="elementor-element elementor-element-73b0ade elementor-align-center elementor-widget elementor-widget-button" data-id="73b0ade" data-element_type="widget" data-widget_type="button.default">
+                <div class="elementor-widget-container">
+                    <div class="elementor-button-wrapper">
+                        <a href="@Url.Action("Thongtin","ThongTin")" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" role="button">
+                            <span class="elementor-button-content-wrapper">
+                                <span class="elementor-button-icon elementor-align-icon-right">
+                                    <i aria-hidden="true" class="fas fa-arrow-right"></i>
+                                </span>
+                                <span class="elementor-button-text   ">            XEM THÊM THÔNG BÁO</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

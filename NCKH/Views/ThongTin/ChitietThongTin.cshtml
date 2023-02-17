@@ -1,0 +1,110 @@
+﻿@model IEnumerable<NCKH.Models.THONGTIN>
+@using NCKH.Models;
+
+<div class="container-fluid pb-5">
+    @foreach (var TT in Model)
+    {
+        <div class="row px-xl-5">
+            <div class="col-lg-5 mb-30">
+                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner bg-light">
+                        <div class="carousel-item active">
+                            <img class="w-100 h-100" src="~/Content/CTSV/@TT.HINHMINHHOA"  alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+                    <h3>@TT.TENTT</h3>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 200px;">
+                            <button class="btn btn-primary px-3 " type="submit">
+                                <i class="fa  mr-1"></i><a href ="@Url.Action("DownloadFile", "ThongTIn", new { Name = TT.FileName })"><span><b style="color:black"> Tải xuống</b></span></a>
+                                </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex pt-2">
+                        <strong class="text-dark mr-2">Share on:</strong>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                   
+                </div>
+            </div>
+      
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="bg-light p-30">
+                    <div class="nav nav-tabs mb-4">
+                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Thông tin chi tiết</a>
+                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Thông tin liên quan </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-pane-1">
+                            <div>
+                                <h4 class="mb-3">Thông tin chi tiết</h4>
+                                <p>@TT.NOIDUNGTT<p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-pane-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="media mb-4">
+                                        <img src="~/Content/CTSV/@TT.HINHMINHHOA"  class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                     
+                                        <div class="media-body">
+                                            <h6> <a href="@Url.Action("ChitietThongTin", "ThongTin", new { id = TT.MATT })" style="text-decoration:none; color:black;"> @TT.TENTT<small> - <i>@TT.NGAYDANG</i></small></a></h6> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-4">Hỗ trợ</h4>
+                                    
+                                    
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="message">Nội dung hỗ trợ </label>
+                                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Tên của bạn</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email của bạn</label>
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <input type="submit" value="Gửi"  class="btn btn-primary px-3">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

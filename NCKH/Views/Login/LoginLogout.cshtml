@@ -1,0 +1,31 @@
+﻿@using NCKH.Models
+@{ Layout = null; }
+@{
+    KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+}
+
+
+@if (Session["Taikhoan"] == null)
+{
+    <li type="none"><a href="~/Login/Dangnhap?id=1"><span class="glyphicon glyphicon-user" style="font-size:13px;color:black">Đăng nhập</span></a></li>
+}
+else
+{
+    <li type="none"><a href="#"  style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="font-size:13px;color:black;">Xin chào:@kh.NAME</span></a></li>
+    <li type="none"><a href="#" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="font-size:13px;color:black">MSSV:@kh.MSSV</span></a></li>
+
+    <li type="none"><a href="@Url.Action("logout","Login")" style="text-decoration:none;"><span class="glyphicon glyphicon-user" style="font-size:13px;color:black">Đăng xuất</span> </a></li>
+}
+<style>
+    /*  li{
+        padding-top:5px;
+        transition:0.5s;
+        width:100%;
+    }
+    li:hover{
+        background:blue;
+       
+    }*/
+
+
+</style>

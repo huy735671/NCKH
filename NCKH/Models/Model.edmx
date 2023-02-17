@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CTSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="MAADM" />
+          </Key>
+          <Property Name="MAADM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EMAILADM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PHONE" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="AVATAR" Type="varchar" MaxLength="50" />
+          <Property Name="AGE" Type="date" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="CHAT">
+          <Key>
+            <PropertyRef Name="MACHAT" />
+          </Key>
+          <Property Name="MACHAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAKH" Type="int" />
+          <Property Name="MAADM" Type="int" />
+          <Property Name="NOIDUNGTINNHAN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NGAY" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CHITIETGIAYCN">
+          <Key>
+            <PropertyRef Name="MAGCN" />
+          </Key>
+          <Property Name="MAGCN" Type="int" Nullable="false" />
+          <Property Name="MAADM" Type="int" />
+        </EntityType>
+        <EntityType Name="DANHMUC">
+          <Key>
+            <PropertyRef Name="MADM" />
+          </Key>
+          <Property Name="MADM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDM" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GIAYCN">
+          <Key>
+            <PropertyRef Name="MAGCN" />
+          </Key>
+          <Property Name="MAGCN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAMEGCN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NGAYDK" Type="datetime" />
+          <Property Name="MAKH" Type="int" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MSSV" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="GMAIL" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PHONE" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="AVATAR" Type="varchar" MaxLength="50" />
+          <Property Name="AGE" Type="date" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="LIENHE">
+          <Key>
+            <PropertyRef Name="MALH" />
+          </Key>
+          <Property Name="MALH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAMEKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="100" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOAITT">
+          <Key>
+            <PropertyRef Name="MALTT" />
+          </Key>
+          <Property Name="MALTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENLTT" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="THONGTIN">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENTT" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NOIDUNGTT" Type="nvarchar" MaxLength="300" />
+          <Property Name="NGAYDANG" Type="datetime" />
+          <Property Name="HINHMINHHOA" Type="varchar" MaxLength="50" />
+          <Property Name="MALTT" Type="int" />
+          <Property Name="MADM" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__CHAT__MAADM__3D5E1FD2">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="CHAT" Type="Self.CHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Principal>
+            <Dependent Role="CHAT">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAT__MAKH__3C69FB99">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CHAT" Type="Self.CHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="CHAT">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETGI__MAADM__300424B4">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="CHITIETGIAYCN" Type="Self.CHITIETGIAYCN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Principal>
+            <Dependent Role="CHITIETGIAYCN">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETGI__MAGCN__2F10007B">
+          <End Role="GIAYCN" Type="Self.GIAYCN" Multiplicity="1" />
+          <End Role="CHITIETGIAYCN" Type="Self.CHITIETGIAYCN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GIAYCN">
+              <PropertyRef Name="MAGCN" />
+            </Principal>
+            <Dependent Role="CHITIETGIAYCN">
+              <PropertyRef Name="MAGCN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GIAYCN__MAKH__2C3393D0">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="GIAYCN" Type="Self.GIAYCN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="GIAYCN">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGTIN__MADM__398D8EEE">
+          <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHMUC">
+              <PropertyRef Name="MADM" />
+            </Principal>
+            <Dependent Role="THONGTIN">
+              <PropertyRef Name="MADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGTIN__MALTT__38996AB5">
+          <End Role="LOAITT" Type="Self.LOAITT" Multiplicity="0..1" />
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITT">
+              <PropertyRef Name="MALTT" />
+            </Principal>
+            <Dependent Role="THONGTIN">
+              <PropertyRef Name="MALTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADMIN_THONGTIN">
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="1" />
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="THONGTIN">
+              <PropertyRef Name="MATT" />
+            </Principal>
+            <Dependent Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTSVModelStoreContainer">
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHAT" EntityType="Self.CHAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHITIETGIAYCN" EntityType="Self.CHITIETGIAYCN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAYCN" EntityType="Self.GIAYCN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIENHE" EntityType="Self.LIENHE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAITT" EntityType="Self.LOAITT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THONGTIN" EntityType="Self.THONGTIN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CHAT__MAADM__3D5E1FD2" Association="Self.FK__CHAT__MAADM__3D5E1FD2">
+            <End Role="ADMIN" EntitySet="ADMIN" />
+            <End Role="CHAT" EntitySet="CHAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAT__MAKH__3C69FB99" Association="Self.FK__CHAT__MAKH__3C69FB99">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="CHAT" EntitySet="CHAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETGI__MAADM__300424B4" Association="Self.FK__CHITIETGI__MAADM__300424B4">
+            <End Role="ADMIN" EntitySet="ADMIN" />
+            <End Role="CHITIETGIAYCN" EntitySet="CHITIETGIAYCN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETGI__MAGCN__2F10007B" Association="Self.FK__CHITIETGI__MAGCN__2F10007B">
+            <End Role="GIAYCN" EntitySet="GIAYCN" />
+            <End Role="CHITIETGIAYCN" EntitySet="CHITIETGIAYCN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GIAYCN__MAKH__2C3393D0" Association="Self.FK__GIAYCN__MAKH__2C3393D0">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="GIAYCN" EntitySet="GIAYCN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGTIN__MADM__398D8EEE" Association="Self.FK__THONGTIN__MADM__398D8EEE">
+            <End Role="DANHMUC" EntitySet="DANHMUC" />
+            <End Role="THONGTIN" EntitySet="THONGTIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGTIN__MALTT__38996AB5" Association="Self.FK__THONGTIN__MALTT__38996AB5">
+            <End Role="LOAITT" EntitySet="LOAITT" />
+            <End Role="THONGTIN" EntitySet="THONGTIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADMIN_THONGTIN" Association="Self.FK_ADMIN_THONGTIN">
+            <End Role="THONGTIN" EntitySet="THONGTIN" />
+            <End Role="ADMIN" EntitySet="ADMIN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CTSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="MAADM" />
+          </Key>
+          <Property Name="MAADM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAILADM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AVATAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="DateTime" Precision="0" />
+          <Property Name="SEX" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHATs" Relationship="Self.FK__CHAT__MAADM__3D5E1FD2" FromRole="ADMIN" ToRole="CHAT" />
+          <NavigationProperty Name="CHITIETGIAYCNs" Relationship="Self.FK__CHITIETGI__MAADM__300424B4" FromRole="ADMIN" ToRole="CHITIETGIAYCN" />
+          <NavigationProperty Name="THONGTIN" Relationship="Self.FK_ADMIN_THONGTIN" FromRole="ADMIN" ToRole="THONGTIN" />
+        </EntityType>
+        <EntityType Name="CHAT">
+          <Key>
+            <PropertyRef Name="MACHAT" />
+          </Key>
+          <Property Name="MACHAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAKH" Type="Int32" />
+          <Property Name="MAADM" Type="Int32" />
+          <Property Name="NOIDUNGTINNHAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ADMIN" Relationship="Self.FK__CHAT__MAADM__3D5E1FD2" FromRole="CHAT" ToRole="ADMIN" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__CHAT__MAKH__3C69FB99" FromRole="CHAT" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="CHITIETGIAYCN">
+          <Key>
+            <PropertyRef Name="MAGCN" />
+          </Key>
+          <Property Name="MAGCN" Type="Int32" Nullable="false" />
+          <Property Name="MAADM" Type="Int32" />
+          <NavigationProperty Name="ADMIN" Relationship="Self.FK__CHITIETGI__MAADM__300424B4" FromRole="CHITIETGIAYCN" ToRole="ADMIN" />
+          <NavigationProperty Name="GIAYCN" Relationship="Self.FK__CHITIETGI__MAGCN__2F10007B" FromRole="CHITIETGIAYCN" ToRole="GIAYCN" />
+        </EntityType>
+        <EntityType Name="DANHMUC">
+          <Key>
+            <PropertyRef Name="MADM" />
+          </Key>
+          <Property Name="MADM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="THONGTINs" Relationship="Self.FK__THONGTIN__MADM__398D8EEE" FromRole="DANHMUC" ToRole="THONGTIN" />
+        </EntityType>
+        <EntityType Name="GIAYCN">
+          <Key>
+            <PropertyRef Name="MAGCN" />
+          </Key>
+          <Property Name="MAGCN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMEGCN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NGAYDK" Type="DateTime" Precision="3" />
+          <Property Name="MAKH" Type="Int32" />
+          <NavigationProperty Name="CHITIETGIAYCN" Relationship="Self.FK__CHITIETGI__MAGCN__2F10007B" FromRole="GIAYCN" ToRole="CHITIETGIAYCN" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__GIAYCN__MAKH__2C3393D0" FromRole="GIAYCN" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MSSV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AVATAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="DateTime" Precision="0" />
+          <Property Name="SEX" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHATs" Relationship="Self.FK__CHAT__MAKH__3C69FB99" FromRole="KHACHHANG" ToRole="CHAT" />
+          <NavigationProperty Name="GIAYCNs" Relationship="Self.FK__GIAYCN__MAKH__2C3393D0" FromRole="KHACHHANG" ToRole="GIAYCN" />
+        </EntityType>
+        <EntityType Name="LIENHE">
+          <Key>
+            <PropertyRef Name="MALH" />
+          </Key>
+          <Property Name="MALH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMEKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TIEUDE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOAITT">
+          <Key>
+            <PropertyRef Name="MALTT" />
+          </Key>
+          <Property Name="MALTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENLTT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="THONGTINs" Relationship="Self.FK__THONGTIN__MALTT__38996AB5" FromRole="LOAITT" ToRole="THONGTIN" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="THONGTIN">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENTT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOIDUNGTT" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYDANG" Type="DateTime" Precision="3" />
+          <Property Name="HINHMINHHOA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MALTT" Type="Int32" />
+          <Property Name="MADM" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ADMIN" Relationship="Self.FK_ADMIN_THONGTIN" FromRole="THONGTIN" ToRole="ADMIN" />
+          <NavigationProperty Name="DANHMUC" Relationship="Self.FK__THONGTIN__MADM__398D8EEE" FromRole="THONGTIN" ToRole="DANHMUC" />
+          <NavigationProperty Name="LOAITT" Relationship="Self.FK__THONGTIN__MALTT__38996AB5" FromRole="THONGTIN" ToRole="LOAITT" />
+        </EntityType>
+        <Association Name="FK__CHAT__MAADM__3D5E1FD2">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="CHAT" Type="Self.CHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Principal>
+            <Dependent Role="CHAT">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETGI__MAADM__300424B4">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="CHITIETGIAYCN" Type="Self.CHITIETGIAYCN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Principal>
+            <Dependent Role="CHITIETGIAYCN">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADMIN_THONGTIN">
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="1" />
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="THONGTIN">
+              <PropertyRef Name="MATT" />
+            </Principal>
+            <Dependent Role="ADMIN">
+              <PropertyRef Name="MAADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHAT__MAKH__3C69FB99">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CHAT" Type="Self.CHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="CHAT">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHITIETGI__MAGCN__2F10007B">
+          <End Role="GIAYCN" Type="Self.GIAYCN" Multiplicity="1" />
+          <End Role="CHITIETGIAYCN" Type="Self.CHITIETGIAYCN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GIAYCN">
+              <PropertyRef Name="MAGCN" />
+            </Principal>
+            <Dependent Role="CHITIETGIAYCN">
+              <PropertyRef Name="MAGCN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGTIN__MADM__398D8EEE">
+          <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHMUC">
+              <PropertyRef Name="MADM" />
+            </Principal>
+            <Dependent Role="THONGTIN">
+              <PropertyRef Name="MADM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GIAYCN__MAKH__2C3393D0">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="GIAYCN" Type="Self.GIAYCN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="GIAYCN">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGTIN__MALTT__38996AB5">
+          <End Role="LOAITT" Type="Self.LOAITT" Multiplicity="0..1" />
+          <End Role="THONGTIN" Type="Self.THONGTIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITT">
+              <PropertyRef Name="MALTT" />
+            </Principal>
+            <Dependent Role="THONGTIN">
+              <PropertyRef Name="MALTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTSVEn" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+          <EntitySet Name="CHATs" EntityType="Self.CHAT" />
+          <EntitySet Name="CHITIETGIAYCNs" EntityType="Self.CHITIETGIAYCN" />
+          <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
+          <EntitySet Name="GIAYCNs" EntityType="Self.GIAYCN" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="LIENHEs" EntityType="Self.LIENHE" />
+          <EntitySet Name="LOAITTs" EntityType="Self.LOAITT" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="THONGTINs" EntityType="Self.THONGTIN" />
+          <AssociationSet Name="FK__CHAT__MAADM__3D5E1FD2" Association="Self.FK__CHAT__MAADM__3D5E1FD2">
+            <End Role="ADMIN" EntitySet="ADMINs" />
+            <End Role="CHAT" EntitySet="CHATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETGI__MAADM__300424B4" Association="Self.FK__CHITIETGI__MAADM__300424B4">
+            <End Role="ADMIN" EntitySet="ADMINs" />
+            <End Role="CHITIETGIAYCN" EntitySet="CHITIETGIAYCNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADMIN_THONGTIN" Association="Self.FK_ADMIN_THONGTIN">
+            <End Role="THONGTIN" EntitySet="THONGTINs" />
+            <End Role="ADMIN" EntitySet="ADMINs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHAT__MAKH__3C69FB99" Association="Self.FK__CHAT__MAKH__3C69FB99">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="CHAT" EntitySet="CHATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHITIETGI__MAGCN__2F10007B" Association="Self.FK__CHITIETGI__MAGCN__2F10007B">
+            <End Role="GIAYCN" EntitySet="GIAYCNs" />
+            <End Role="CHITIETGIAYCN" EntitySet="CHITIETGIAYCNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGTIN__MADM__398D8EEE" Association="Self.FK__THONGTIN__MADM__398D8EEE">
+            <End Role="DANHMUC" EntitySet="DANHMUCs" />
+            <End Role="THONGTIN" EntitySet="THONGTINs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GIAYCN__MAKH__2C3393D0" Association="Self.FK__GIAYCN__MAKH__2C3393D0">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="GIAYCN" EntitySet="GIAYCNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGTIN__MALTT__38996AB5" Association="Self.FK__THONGTIN__MALTT__38996AB5">
+            <End Role="LOAITT" EntitySet="LOAITTs" />
+            <End Role="THONGTIN" EntitySet="THONGTINs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CTSVModelStoreContainer" CdmEntityContainer="CTSVEn">
+          <EntitySetMapping Name="ADMINs">
+            <EntityTypeMapping TypeName="CTSVModel.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="MAADM" ColumnName="MAADM" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAILADM" ColumnName="EMAILADM" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHATs">
+            <EntityTypeMapping TypeName="CTSVModel.CHAT">
+              <MappingFragment StoreEntitySet="CHAT">
+                <ScalarProperty Name="MACHAT" ColumnName="MACHAT" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MAADM" ColumnName="MAADM" />
+                <ScalarProperty Name="NOIDUNGTINNHAN" ColumnName="NOIDUNGTINNHAN" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHITIETGIAYCNs">
+            <EntityTypeMapping TypeName="CTSVModel.CHITIETGIAYCN">
+              <MappingFragment StoreEntitySet="CHITIETGIAYCN">
+                <ScalarProperty Name="MAGCN" ColumnName="MAGCN" />
+                <ScalarProperty Name="MAADM" ColumnName="MAADM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANHMUCs">
+            <EntityTypeMapping TypeName="CTSVModel.DANHMUC">
+              <MappingFragment StoreEntitySet="DANHMUC">
+                <ScalarProperty Name="MADM" ColumnName="MADM" />
+                <ScalarProperty Name="TENDM" ColumnName="TENDM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAYCNs">
+            <EntityTypeMapping TypeName="CTSVModel.GIAYCN">
+              <MappingFragment StoreEntitySet="GIAYCN">
+                <ScalarProperty Name="MAGCN" ColumnName="MAGCN" />
+                <ScalarProperty Name="NAMEGCN" ColumnName="NAMEGCN" />
+                <ScalarProperty Name="NGAYDK" ColumnName="NGAYDK" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="CTSVModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+                <ScalarProperty Name="GMAIL" ColumnName="GMAIL" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIENHEs">
+            <EntityTypeMapping TypeName="CTSVModel.LIENHE">
+              <MappingFragment StoreEntitySet="LIENHE">
+                <ScalarProperty Name="MALH" ColumnName="MALH" />
+                <ScalarProperty Name="NAMEKH" ColumnName="NAMEKH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAITTs">
+            <EntityTypeMapping TypeName="CTSVModel.LOAITT">
+              <MappingFragment StoreEntitySet="LOAITT">
+                <ScalarProperty Name="MALTT" ColumnName="MALTT" />
+                <ScalarProperty Name="TENLTT" ColumnName="TENLTT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CTSVModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THONGTINs">
+            <EntityTypeMapping TypeName="CTSVModel.THONGTIN">
+              <MappingFragment StoreEntitySet="THONGTIN">
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="TENTT" ColumnName="TENTT" />
+                <ScalarProperty Name="NOIDUNGTT" ColumnName="NOIDUNGTT" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="HINHMINHHOA" ColumnName="HINHMINHHOA" />
+                <ScalarProperty Name="MALTT" ColumnName="MALTT" />
+                <ScalarProperty Name="MADM" ColumnName="MADM" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
